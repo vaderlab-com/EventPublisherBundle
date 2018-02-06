@@ -85,11 +85,13 @@ class PublishService implements PublishClientInterface
     }
 
     /**
-     * @param string $event
+     * @param string $type
      * @param array|null $data
+     * @param string $event
+     * @throws \Exception
      * @throws \WebSocket\BadOpcodeException
      */
-    public function publish(string $event, array $data = null): void
+    public function publish(string $type, array $data = null, string $event = self::TYPE_NOTIFY): void
     {
         if(!$this->isConnected()) {
             $this->connect();
@@ -97,7 +99,10 @@ class PublishService implements PublishClientInterface
 
         $this->client->send(json_encode([
             'action'    => $event,
-            'data'      => $data,
+            'data'      => [
+                'type'  => $type,
+                'message' => $data
+            ],
         ]));
     }
 }

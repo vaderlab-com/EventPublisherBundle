@@ -11,6 +11,9 @@ namespace VaderLab\EventPublisherBundle\Service;
 
 interface PublishClientInterface
 {
+
+    const TYPE_NOTIFY = 'notify';
+
     public function isConnected(): bool;
 
     /**
@@ -25,9 +28,11 @@ interface PublishClientInterface
     public function disconnect(): void;
 
     /**
-     * @param string $event
+     * @param string $type
      * @param array|null $data
+     * @param string $event
+     * @throws \Exception
      * @throws \WebSocket\BadOpcodeException
      */
-    public function publish(string $event, array $data = null): void;
+    public function publish(string $type, array $data = null, string $event = self::TYPE_NOTIFY): void;
 }
