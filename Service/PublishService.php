@@ -41,8 +41,6 @@ class PublishService implements PublishClientInterface
     {
         $this->connUri = $connUri;
         $this->apiKey = $apiKey;
-
-        $this->connect();
     }
 
     public function isConnected(): bool
@@ -70,6 +68,10 @@ class PublishService implements PublishClientInterface
 
     public function receive(): string
     {
+        if(!$this->isConnected()) {
+            $this->connect();
+        }
+
         return $this->client->receive();
     }
 
@@ -89,6 +91,10 @@ class PublishService implements PublishClientInterface
      */
     public function publish(string $event, array $data = null): void
     {
+        if(!$this->isConnected()) {
+            $this->connect();
+        }
+
         $this->client->send(json_encode([
             'action'    => $event,
             'data'      => $data,
