@@ -100,10 +100,10 @@ class PublishService implements PublishClientInterface
 
         $this->client->send(json_encode([
             'action'    => $event,
-            'data'      => [
+            'message'      => [
                 'type'  => $type,
                 'user_id' => $user_id,
-                'message' => $data
+                'data' => $data
             ],
         ]));
     }
