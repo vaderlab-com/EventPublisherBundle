@@ -30,9 +30,10 @@ interface PublishClientInterface
     /**
      * @param string $type
      * @param array|null $data
+     * @param int $user_id
      * @param string $event
      * @throws \Exception
      * @throws \WebSocket\BadOpcodeException
      */
-    public function publish(string $type, array $data = null, string $event = self::TYPE_NOTIFY): void;
+    public function publish(string $type, int $user_id, array $data = null, string $event = self::TYPE_NOTIFY): void;
 }
