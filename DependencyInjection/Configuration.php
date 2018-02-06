@@ -33,6 +33,15 @@ class Configuration implements ConfigurationInterface
                         ->isRequired()
                         ->info('Get your api_key from the https://www.vaderlab.com/en/api_key/')
                         ->end()
+                    ->arrayNode('service')
+                    ->children()
+                        ->scalarNode('notification_service')
+                            ->defaultValue('vaderlab.event_publisher.notification_service')
+                            ->end()
+                        ->scalarNode('publisher_service')
+                            ->defaultValue('vaderlab.event_publisher.publisher_service')
+                            ->end()
+                    ->end()
                 ->end();
 
         // Here you should define the parameters that are allowed to

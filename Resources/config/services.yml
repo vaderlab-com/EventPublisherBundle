@@ -1,7 +1,42 @@
 services:
-    vaderlab.event_publisher.publish_service:
+
+    vaderlab.security.notification_factory:
+        class: 'VaderLab\EventPublisherBundle\Service\Action\NotificationServiceFactory'
+        lazy: true
+        arguments:
+            - '@service_container'
+            - '%vaderlab.event_publisher.service.notification_service%'
+
+    vaderlab.event_publisher.notification:
+        class: 'VaderLab\EventPublisherBundle\Service\Action\NotificationServiceInterface'
+        factory: ['@vaderlab.security.notification_factory', 'create']
+        public: true
+        lazy: true
+
+
+    vaderlab.event_publisher.notification_service:
+        class: 'VaderLab\EventPublisherBundle\Service\Action\NotificationService'
+        lazy: true,
+        arguments:
+            - '@vaderlab.event_publisher.publisher'
+
+
+    vaderlab.event_publisher.publisher_factory:
+        class: 'VaderLab\EventPublisherBundle\Service\PublisherServiceFactory'
+        arguments:
+             - '@service_container'
+             - '%vaderlab.event_publisher.service.notification_service%'
+
+    vaderlab.event_publisher.publisher:
+        class: 'VaderLab\EventPublisherBundle\Service\PublishClientInterface'
+        factory: ['@vaderlab.event_publisher.publisher_factory', 'create']
+        public: true
+        lazy: true
+
+    vaderlab.event_publisher.publisher_service:
         class: 'VaderLab\EventPublisherBundle\Service\PublishService'
         public: true
+        lazy: true
         arguments:
             - '%vaderlab.event_publisher.websocket_uri%'
             - '%vaderlab.event_publisher.api_key%'
