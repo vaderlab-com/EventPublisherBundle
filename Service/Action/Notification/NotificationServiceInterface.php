@@ -6,7 +6,7 @@
  * Time: 12:29
  */
 
-namespace VaderLab\EventPublisherBundle\Service\Action;
+namespace VaderLab\EventPublisherBundle\Service\Action\Notification;
 
 
 interface NotificationServiceInterface

@@ -6,7 +6,7 @@
  * Time: 12:14
  */
 
-namespace VaderLab\EventPublisherBundle\Service\Action;
+namespace VaderLab\EventPublisherBundle\Service\Action\Notification;
 
 use VaderLab\EventPublisherBundle\Service\PublishClientInterface;
 

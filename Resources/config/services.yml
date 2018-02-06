@@ -1,21 +1,21 @@
 services:
 
     vaderlab.security.notification_factory:
-        class: 'VaderLab\EventPublisherBundle\Service\Action\NotificationServiceFactory'
+        class: 'VaderLab\EventPublisherBundle\Service\Action\Notification\NotificationServiceFactory'
         lazy: true
         arguments:
             - '@service_container'
             - '%vaderlab.event_publisher.service.notification_service%'
 
     vaderlab.event_publisher.notification:
-        class: 'VaderLab\EventPublisherBundle\Service\Action\NotificationServiceInterface'
+        class: 'VaderLab\EventPublisherBundle\Service\Action\Notification\NotificationServiceInterface'
         factory: ['@vaderlab.security.notification_factory', 'create']
         public: true
         lazy: true
 
 
     vaderlab.event_publisher.notification_service:
-        class: 'VaderLab\EventPublisherBundle\Service\Action\NotificationService'
+        class: 'VaderLab\EventPublisherBundle\Service\Action\Notification\NotificationService'
         lazy: true,
         arguments:
             - '@vaderlab.event_publisher.publisher'

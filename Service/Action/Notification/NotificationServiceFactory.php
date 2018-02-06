@@ -6,7 +6,7 @@
  * Time: 12:32
  */
 
-namespace VaderLab\EventPublisherBundle\Service\Action;
+namespace VaderLab\EventPublisherBundle\Service\Action\Notification;
 
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
