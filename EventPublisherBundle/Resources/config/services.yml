@@ -1,0 +1,7 @@
+services:
+    vaderlab.event_publisher.publish_service:
+        class: 'VaderLab\EventPublisherBundle\Service\PublishService'
+        public: true
+        arguments:
+            - '%vaderlab.event_publisher.websocket_uri%'
+            - '%vaderlab.event_publisher.api_key%'

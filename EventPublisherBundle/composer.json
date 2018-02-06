@@ -1,0 +1,28 @@
+{
+  "name" : "vaderlab/event-publisher-bundle",
+  "description" : "Bundle for connect to the Vaderlab Services API",
+  "version" : "v1.0.0",
+  "type" : "symfony-bundle",
+  "homepage": "https://github.com/vaderlab-com/EventPublisherBundle",
+  "license" : "MIT",
+  "keywords" : ["vaderlab", "symfony", "event publisher bundle"],
+  "authors" : [{
+    "name" : "Stanislau Komar",
+    "email" : "ceo@vaderlab.com"
+  }],
+  "require" : {
+    "php": ">=7.2",
+    "symfony/symfony": ">=3.4",
+    "textalk/websocket": "^1.2"
+  },
+  "suggest": {
+  },
+  "autoload" : {
+    "psr-4" : { "VaderLab\\EventPublisherBundle\\" : "" }
+  },
+  "extra" : {
+    "branch-alias" : {
+      "dev-master" : "v1.0.x-dev"
+    }
+  }
+}
